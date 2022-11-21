@@ -14,12 +14,12 @@ import Checkout from "./pages/Checkout";
 import { Navigate } from "react-router-dom";
 import Register from "./pages/Register";
 
-function ProtectedRoute({ childern }) {
+function ProtectedRoute({ children }) {
   const { user } = useAuth();
   if (!user) {
     return <Navigate to={"/login"} />;
   } else {
-    return childern;
+    return children;
   }
 }
 
