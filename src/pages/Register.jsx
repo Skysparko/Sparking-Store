@@ -1,20 +1,18 @@
 import { styled } from "@mui/material";
-import { Box } from "@mui/material";
 import { Container, CssBaseline, Button, TextField } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../firebase/Auth";
 
-export default function Login() {
-  const { signIn } = useAuth();
-
+export default function Register() {
   const navigate = useNavigate();
-  async function login(event) {
-    event.preventDefault();
-    const { email, password } = event.target;
-    await signIn(email.value, password.value);
-    navigate("/");
+  const { signUp } = useAuth();
+  async function register(e) {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    await signUp(data.get("email"), data.get("password"), data.get("name"));
+    navigate("/login");
   }
 
   const Form = styled("form")(({ theme }) => ({
@@ -25,7 +23,6 @@ export default function Login() {
     justifyContent: "center",
     height: "100%",
   }));
-
   return (
     <Container
       sx={{
@@ -38,14 +35,20 @@ export default function Login() {
       }}
     >
       <CssBaseline />
-      <Form onSubmit={login}>
+      <Form onSubmit={register}>
+        <TextField label="Name" type="name" name="name"></TextField>
         <TextField label="Email" required type="email" name="email"></TextField>
-        <TextField label="Password" type="password" name="password"></TextField>
+        <TextField
+          label="Password"
+          required
+          type="password"
+          name="password"
+        ></TextField>
         <Button variant="contained" type="submit">
-          Sign In
+          Register
         </Button>
       </Form>
-      <Link to="/register">New User? Register here</Link>
+      <Link to="/login">Already have an account? Login here</Link>
     </Container>
   );
 }

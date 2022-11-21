@@ -7,19 +7,51 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import AuthProvider, { useAuth } from "./firebase/Auth";
+import Checkout from "./pages/Checkout";
+import { Navigate } from "react-router-dom";
+import Register from "./pages/Register";
+
+function ProtectedRoute({ childern }) {
+  const { user } = useAuth();
+  if (!user) {
+    return <Navigate to={"/login"} />;
+  } else {
+    return childern;
+  }
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route exact path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route path="/cart" element={<Cart />} />
+    <>
+      <Route exact path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route
+          path="/checkout"
+          element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          }
+        />
+      </Route>
       <Route path="/login" element={<Login />} />
-    </Route>
+      <Route path="/register" element={<Register />} />
+    </>
   )
 );
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </AuthProvider>
+  );
 }
 
 export default App;
