@@ -42,7 +42,7 @@ export default function Cart() {
         <Grid item container spacing={2} md={8}>
           {cartItems?.map(({ Product, quantity }) => {
             const { title, id, description, price, image, rating } = Product;
-            console.log(Product);
+
             return (
               <Grid item key={id} xs={12}>
                 <Card

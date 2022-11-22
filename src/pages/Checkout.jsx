@@ -11,8 +11,11 @@ import {
 
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { clearCart } from "../functions/cart-slice";
 
 function getStepContent(activeStep) {
   switch (activeStep) {
@@ -30,6 +33,8 @@ const steps = ["Shipping Address", "Payment Details", "Review Order"];
 export default function Checkout() {
   const [activeStep, setActiveStep] = useState(0);
   const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   return (
     <Container
       component="section"
@@ -90,6 +95,7 @@ export default function Checkout() {
                   variant="contained"
                   onClick={() => {
                     setActiveStep(activeStep + 1);
+                    dispatch(clearCart());
                   }}
                 >
                   Place Order
