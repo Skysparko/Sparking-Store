@@ -1,11 +1,8 @@
-import { SearchOutlined } from "@mui/icons-material";
 import { SearchRounded } from "@mui/icons-material";
-import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Menu } from "@mui/material";
-import { Input } from "@mui/material";
-import { MenuItem } from "@mui/material";
 import {
+  Menu,
+  MenuItem,
   AppBar,
   Toolbar,
   Typography,
@@ -22,9 +19,7 @@ import {
 
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../firebase/Auth";
 import { fetchAllCategories } from "../functions/categories-slice";

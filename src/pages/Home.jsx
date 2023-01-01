@@ -1,4 +1,4 @@
-import { ShoppingCartSharp } from "@mui/icons-material";
+import { ShoppingCartSharp } from "@mui/icons-material/";
 import {
   Card,
   Grid,
@@ -14,12 +14,10 @@ import {
 
 import React from "react";
 import { useEffect, useState } from "react";
-import { json } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { json, useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../functions/cart-slice";
-import { useSelector } from "react-redux";
 import { FetchAllProducts } from "../functions/products-slice";
-import { useSearchParams } from "react-router-dom";
 
 export default function Home() {
   const [searchParams] = useSearchParams();

@@ -1,6 +1,4 @@
-import { CssBaseline } from "@mui/material";
-import { ThemeProvider } from "@mui/material";
-import { createTheme } from "@mui/material";
+import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import React from "react";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";

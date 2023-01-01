@@ -1,5 +1,3 @@
-import { Button } from "@mui/material";
-import { Box } from "@mui/material";
 import {
   Paper,
   Container,
@@ -7,14 +5,14 @@ import {
   StepLabel,
   Step,
   Typography,
+  Box,
+  Button,
 } from "@mui/material";
 
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Navigate } from "react-router-dom";
 import { clearCart } from "../functions/cart-slice";
 
 function getStepContent(activeStep) {

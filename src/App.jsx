@@ -1,8 +1,11 @@
 import "./App.css";
-import { createBrowserRouter } from "react-router-dom";
-import { createRoutesFromElements } from "react-router-dom";
-import { Route } from "react-router-dom";
-import { RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  createRoutesFromElements,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
@@ -11,7 +14,6 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import AuthProvider, { useAuth } from "./firebase/Auth";
 import Checkout from "./pages/Checkout";
-import { Navigate } from "react-router-dom";
 import Register from "./pages/Register";
 
 function ProtectedRoute({ children }) {

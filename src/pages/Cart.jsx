@@ -5,19 +5,17 @@ import {
   CardMedia,
   Typography,
   useTheme,
-  CardActions,
   Button,
   Rating,
   CardContent,
   Container,
   Box,
+  TextField,
 } from "@mui/material";
-import { useSelector } from "react-redux";
-import { TextField } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
 import { getSubTotal } from "../ultis";
 import { useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart } from "../functions/cart-slice";
-import { useDispatch } from "react-redux";
 
 export default function Cart() {
   const cartItems = useSelector((state) => state.cart?.value);
